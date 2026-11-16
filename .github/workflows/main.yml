@@ -1,0 +1,27 @@
+name: Web Project Structure CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get project files
+        uses: actions/checkout@v7
+
+      - name: Check HTML file
+        run: test -f index.html
+
+      - name: Check CSS file
+        run: test -f style.css
+
+      - name: Check JavaScript file
+        run: test -f script.js
